@@ -1,15 +1,17 @@
-// src/pages/CP.jsx
+// src/pages/LandingPage.jsx
 
+import { useLocation } from 'react-router-dom'; // Importa useLocation
 import cities from "../utils/cities.js";
-import {InfoButton} from "../components/atoms/InfoButton.jsx";
+import { InfoButton } from "../components/atoms/InfoButton.jsx";
 import { Fav } from "../components/atoms/Fav.jsx"; // Asegúrate de usar la importación con llaves
 
 export const LandingPage = () => {
-  let zone; // Definir zone con let para poder reasignarlo
+  const location = useLocation(); // Obtiene la ubicación actual
+  let zone;
 
   // Asignar el valor a zone
-  if (window.location.pathname.length > 1) {
-    zone = window.location.pathname.substring(1);
+  if (location.pathname.length > 1) {
+    zone = location.pathname.substring(1);
   } else {
     zone = "cp"; // Valor por defecto
   }

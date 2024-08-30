@@ -11,10 +11,5 @@ body {
     align-items: center;
     width: 100vw;   // Ocupa el 100% del ancho de la ventana
     height: 100vh;  // Ocupa el 100% del alto de la ventana
-
-    .active {
-      background-color: #000; // Fondo negro para el enlace activo
-      color: #fff; // Letras blancas para el enlace activo
-    }
   }
 }
