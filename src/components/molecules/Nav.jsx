@@ -7,8 +7,8 @@ import { ModeButton } from "../atoms/ModeButton";
 export const Nav = () => {
   const location = useLocation();
 
-  return (
-    <nav className="flex w-full bg-black p-2 uppercase text-white justify-between">
+  return (<nav className="flex w-full bg-black p-2 uppercase text-white justify-between border-b border-white">
+
       <ul className="flex space-x-4 my-auto">
         <li>
           <NavLink 
@@ -21,15 +21,13 @@ export const Nav = () => {
         </li>
         <li>
           <NavLink 
-            to="/no"
-          >
+            to="/no">
             Norte y Este
           </NavLink>
         </li>
         <li>
           <NavLink 
-            to="/ruta"
-          >
+            to="/ruta">
             Ruta
           </NavLink>
         </li>

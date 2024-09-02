@@ -1,16 +1,16 @@
-// src/components/atoms/Fav.jsx
+// src/components/atoms/ContractButton.jsx
 
 import { useState, useContext, useEffect } from 'react';
 import { FavoritesContext } from '../../contexts/FavoritesContextProvider';
 
-export const Fav = ({ city }) => {
-  const [isContracted, setIsContracted] = useState(false); // Definir estado local
+export const ContractButton = ({ city }) => {
+  const [isContracted, setIsContracted] = useState(false);
   const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
+  // Efecto para verificar si la ciudad está en favoritos al montar el componente
   useEffect(() => {
-    // Verificar si la ciudad está en favoritos al montar el componente
     const isFavorite = favorites.some((favorite) => favorite.id === city.id);
-    setIsContracted(isFavorite); // Actualizar estado basado en la verificación
+    setIsContracted(isFavorite);
   }, [favorites, city.id]); // Dependencias: se actualiza si favorites o city.id cambian
 
   const handleClick = () => {
@@ -23,14 +23,14 @@ export const Fav = ({ city }) => {
   };
 
   return (
-    <div 
+    <button
       onClick={handleClick}
-      className={`rounded-full px-3 py-1 text-green-700 cursor-pointer ${
+      className={`p-3 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
         isContracted
-          ? 'bg-green-700'
-          : 'hidden'
-      } `}>
-      {isContracted ? 'C' : 'N'}
-    </div>
+          ? 'bg-red-700 hover:bg-red-800 focus:ring-red-500'
+          : 'bg-green-700 hover:bg-green-800 focus:ring-green-500'
+      } text-white`}>
+      {isContracted ? 'ANULAR' : 'CONTRATAR'}
+    </button>
   );
 };

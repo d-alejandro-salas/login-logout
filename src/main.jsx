@@ -1,23 +1,37 @@
 // src/main.jsx
 
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom/client';
-import {Home} from './Home.jsx';
+import { Home } from './Home.jsx';
 import "tailwindcss/tailwind.css";
 
-//contextos
-import { ThemeContextProvider } from './contexts/ThemeContextProvider.jsx';
+// Contextos
+import { ThemeContextProvider, ThemeContext } from './contexts/ThemeContextProvider.jsx';
 import { LogeadoProvider } from './contexts/LogeadoProvider.jsx';
-import { ActivatedPageProvider } from './contexts/ActivatedPageContext.jsx'; // Asegúrate de importar correctamente
+import { FavoritesContextProvider } from './contexts/FavoritesContextProvider.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const App = () => {
+  const { darkMode } = useContext(ThemeContext);
+
+  return (
+    <div className={`min-h-screen ${darkMode ? 'bg-black text-white' : 'bg-white'}`}>
+      <Home />
+    </div>
+  );
+};
+
+// Crear la raíz una sola vez
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Renderizar el árbol de componentes
+root.render(
   <React.StrictMode>
     <ThemeContextProvider>
-    <LogeadoProvider>
-      <ActivatedPageProvider>
-        <Home />
-      </ActivatedPageProvider>
-    </LogeadoProvider>
+      <LogeadoProvider>
+        <FavoritesContextProvider>
+          <App />
+        </FavoritesContextProvider>
+      </LogeadoProvider>
     </ThemeContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

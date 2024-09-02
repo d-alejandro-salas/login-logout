@@ -4,20 +4,17 @@ import { useContext } from 'react';
 import { LogeadoContext } from '../../contexts/LogeadoProvider';
 
 export const LoggingButton = ({ inputRef, isDisabled }) => {
-  const { logeado, setLogeado, setUserName } = useContext(LogeadoContext);
+  const { logeado, logIn, logOut } = useContext(LogeadoContext); // Usamos las nuevas funciones
 
   const handleClick = (e) => {
-    e.preventDefault(); // Previene el comportamiento por defecto del formulario
+    e.preventDefault();
 
     if (logeado) {
-      // Si el usuario está logueado, hacemos logout
-      setLogeado(false);
-      setUserName(null);
+      logOut(); // Llamamos a logOut en lugar de setLogeado(false)
     } else {
-      // Si el usuario no está logueado, hacemos login
-      setLogeado(true);
       if (inputRef.current) {
-        setUserName(inputRef.current.value); // Actualiza el nombre de usuario
+        logIn(inputRef.current.value); // Pasamos el nombre de usuario como payload al hacer logIn
+        console.log(inputRef.current.value);
       }
     }
   }

@@ -1,12 +1,12 @@
 // src/pages/LandingPage.jsx
 
-import { useLocation } from 'react-router-dom'; // Importa useLocation
+import { useLocation } from 'react-router-dom';
 import cities from "../utils/cities.js";
 import { InfoButton } from "../components/atoms/InfoButton.jsx";
-import { Fav } from "../components/atoms/Fav.jsx"; // Asegúrate de usar la importación con llaves
+import { Fav } from "../components/atoms/Fav.jsx";
 
 export const LandingPage = () => {
-  const location = useLocation(); // Obtiene la ubicación actual
+  const location = useLocation();
   let zone;
 
   // Asignar el valor a zone
@@ -17,23 +17,22 @@ export const LandingPage = () => {
   }
 
   return (
-    <section className="my-4 mx-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <section className="bg-transparent my-4 mx-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {cities
         .filter(city => city.zone === zone)
         .map(city => (
           <div 
             key={city.id} 
-            className="flex flex-col relative items-center justify-center border border-orange-600 rounded-xl bg-white hover:bg-yellow-100 p-4 shadow-md">
-            <h1 className="text-xl font-bold text-gray-900 mb-2">{city.name}</h1>
-            <p className="text-gray-700 mb-2">{city.situation}</p>
+            className="bg-transparent flex flex-col relative items-center justify-center border border-orange-600 rounded-xl bg-white hover:bg-green-100 p-4 shadow-md">
+            <h1 className="mb-2">{city.name}</h1>
+            <p className="mb-2">{city.situation}</p>
             <img 
               src={city.image} 
               alt={city.name} 
-              className="w-full h-40 object-cover mb-2 rounded"
-            />
-            <div className="flex justify-between w-full">
+              className="w-full h-40 object-cover mb-2 rounded"/>
+            <div className="flex justify-between w-full items-center">
               <InfoButton cityId={city.id} />
-              <Fav />
+              <Fav city={city}/>
             </div>
           </div>
         ))}

@@ -7,6 +7,7 @@ import { Login } from './pages/Login';
 import { Nav } from './components/molecules/Nav';
 import { LandingPage } from './pages/LandingPage';
 import { City } from './components/City';
+import { Rute } from './components/Rute';
 
 export const Home = () => {
   const { logeado } = useContext(LogeadoContext);
@@ -27,6 +28,7 @@ export const Home = () => {
             <Route path="/no" element={<LandingPage />} />
             <Route path="/:cityId" element={<City />} /> {/* Ruta para detalles de la ciudad */}
             <Route path="/login" element={<Navigate to="/" replace />} />
+            <Route path="/ruta" element={<Rute />} />
           </>
         )}
       </Routes>
