@@ -24,7 +24,7 @@ export const Login = () => {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
       <div className="flex flex-col items-center justify-center w-full max-w-md p-8 bg-white shadow-lg rounded-lg border border-gray-300">
-        <h1 className="mb-6">Welcome</h1>
+        <h1 className="mb-6 text-black">Welcome</h1>
         <form className="flex flex-col space-y-4 w-full">
           <input
             ref={inputRef}

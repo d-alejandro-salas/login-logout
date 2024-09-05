@@ -23,14 +23,13 @@ export const Fav = ({ city }) => {
   };
 
   return (
-    <div 
-      onClick={handleClick}
-      className={`rounded-full px-3 py-1 text-green-700 cursor-pointer ${
-        isContracted
-          ? 'bg-green-700'
-          : 'hidden'
-      } `}>
-      {isContracted ? 'C' : 'N'}
-    </div>
+<div 
+  onClick={handleClick}
+  className={`w-10 h-10 rounded-full inline-block ${
+    isContracted ? 'text-green-700 bg-green-700' : 'hidden'
+  }`}>
+</div>
+
+
   );
 };

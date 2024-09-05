@@ -1,11 +1,14 @@
 // src/pages/LandingPage.jsx
 
+import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import cities from "../utils/cities.js";
 import { InfoButton } from "../components/atoms/InfoButton.jsx";
 import { Fav } from "../components/atoms/Fav.jsx";
+import { ThemeContext } from '../contexts/ThemeContextProvider.jsx';
 
 export const LandingPage = () => {
+  const { darkMode } = useContext(ThemeContext);
   const location = useLocation();
   let zone;
 
@@ -23,18 +26,22 @@ export const LandingPage = () => {
         .map(city => (
           <div 
             key={city.id} 
-            className="bg-transparent flex flex-col relative items-center justify-center border border-orange-600 rounded-xl bg-white hover:bg-green-100 p-4 shadow-md">
-            <h1 className="mb-2">{city.name}</h1>
+            className={`mb-2 ${darkMode 
+              ? 'bg-black text-white hover:bg-gray-800'  // Modo oscuro: hover más oscuro
+              : 'bg-white text-black hover:bg-gray-200'  // Modo claro: hover más claro
+            } flex flex-col relative items-center justify-between border border-orange-600 rounded-xl p-4 shadow-md h-full`}
+          >
+            <h1 className="flex-grow">{city.name}</h1><div>
             <p className="mb-2">{city.situation}</p>
             <img 
               src={city.image} 
               alt={city.name} 
               className="w-full h-40 object-cover mb-2 rounded"/>
-            <div className="flex justify-between w-full items-center">
+            <div className="flex justify-between w-full items-center mt-auto">
               <InfoButton cityId={city.id} />
               <Fav city={city}/>
             </div>
-          </div>
+          </div></div>
         ))}
     </section>
   );

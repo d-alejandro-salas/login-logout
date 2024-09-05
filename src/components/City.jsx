@@ -10,7 +10,7 @@ export const City = () => {
   const navigate = useNavigate(); // Hook para la navegación
 
   return (
-    <section className="flex bg-transparent flex-col font-bold items-center max-w-2xl mx-auto p-6 rounded-lg">
+    <section className="flex bg-transparent flex-col font-bold items-center max-w-2xl mx-auto p-6 rounded-lg border border-white">
       <h1 className="text-3xl mb-4">{city.name}</h1>      
       <p className="mb-4 text-base">{city.situation}</p>
       <div className="w-full h-[400px] mb-4 rounded overflow-hidden relative">
